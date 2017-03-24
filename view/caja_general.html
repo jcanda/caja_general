@@ -35,8 +35,15 @@
    
    function delete_caja(id)
    {
-        if(confirm("¿Realmente desea eliminar la caja "+id+"?"))
-            window.location.href = '{$fsc->url()}&delete='+id;
+         bootbox.confirm({
+            window.location.href = "{$fsc->url()}&delete=" + id;     +            message: '¿Realmente desea eliminar la caja ' + id + '?',
+            title: '<b>Atención</b>',
+            callback: function(result) {
+               if (result) {
+                  window.location.href = "{$fsc->url()}&delete=" + id;
+               }
+            }
+         });
    }   
 </script>
 
