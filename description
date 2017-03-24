@@ -1,1 +1,2 @@
-Modulo que genera la posibilidad de crear Cajas Contables por almacen, con control de cambios por usuario, permite la introducción manual de apuntes DEBE ó HABER.
+Modulo que genera la posibilidad de crear Cajas Contables por almacen, con control de cambios por usuario, permite la introducción manual de apuntes DEBE ó HABER.<br>
+Nota: Actualmente no se integra con la contabilidad.

@@ -122,7 +122,7 @@
                 </td>
                 <td class="text-center">{$value->f_apunte}</td>
                 <td class="text-left">{if="$value->concepto==''"}-{else}{$value->concepto}{/if}</td>
-                <td class="text-right">{$fsc->show_numero($value->apunte,2)} €</td>
+                <td class="text-right">{$fsc->show_precio($value->apunte, FALSE, TRUE, 2)}</td>
                 <!--{$total_caja+=$value->apunte}-->
             </tr>
         {else}
@@ -133,7 +133,7 @@
             <tr>
                 <td colspan="3"></td>
                 <td class="text-right"><b>Total: </b></td>
-                <td class="text-right"><b>{$fsc->show_numero($total_caja,2)} €</b></td>
+                <td class="text-right"><b>{$fsc->show_precio($total_caja, FALSE, TRUE, 2)}</b></td>
             </tr>
     </table>
 </div> 

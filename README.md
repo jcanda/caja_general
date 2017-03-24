@@ -1,2 +1,3 @@
 # caja_general
-Plugin para FacturaScripts que permite llevar el control de una Caja Contable General por Almacen, que permite la introducción manual de apuntes de Ingreso o Pago.
+Plugin que genera la posibilidad de crear Cajas Contables por almacen, con control de cambios por usuario, permite la introducción manual de apuntes DEBE ó HABER. 
+Nota: Actualmente no se integra con la contabilidad.
