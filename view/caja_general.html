@@ -36,7 +36,7 @@
    function delete_caja(id)
    {
          bootbox.confirm({
-            window.location.href = "{$fsc->url()}&delete=" + id;     +            message: '¿Realmente desea eliminar la caja ' + id + '?',
+            message: '¿Realmente desea eliminar la caja ' + id + '?',
             title: '<b>Atención</b>',
             callback: function(result) {
                if (result) {
@@ -148,7 +148,7 @@
                                      <span class="glyphicon glyphicon-lock"></span>
                                  </a>
                                  {/if}
-                                 <a href="#" class="btn btn-xs btn-danger" title="Eliminar" onclick="delete_caja('{$value->id}')">
+                                 <a href="#" class="btn btn-xs btn-danger" title="Eliminar" onclick="delete_caja('{$value->id}')" >
                                      <span class="glyphicon glyphicon-trash"></span>
                                  </a>
                              </div>
