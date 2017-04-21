@@ -170,12 +170,12 @@ class cajas_general extends fs_model
 
    public function disponible($almacen = '') {
         if ($almacen != '') {
-            if ($this->db->select("SELECT * FROM {$this->table_name} WHERE f_fin IS NULL AND codalmacen = " . $this->var2str($almacen) . ";")) {
+            if ($this->db->select("SELECT * FROM ".$this->table_name." WHERE f_fin IS NULL AND codalmacen = " . $this->var2str($almacen) . ";")) {
                 return FALSE;
             } else
                 return TRUE;
         }else {
-            if ($this->db->select("SELECT * FROM {$this->table_name} WHERE f_fin IS NULL AND codalmacen = " . $this->var2str($this->codalmacen) . ";")) {
+            if ($this->db->select("SELECT * FROM ".$this->table_name." WHERE f_fin IS NULL AND codalmacen = " . $this->var2str($this->codalmacen) . ";")) {
                 return FALSE;
             } else
                 return TRUE;
@@ -208,7 +208,7 @@ class cajas_general extends fs_model
             $value = $this->var2str($this->id);
             if($this->id)
             {
-                $sql = "UPDATE {$this->table_name} SET id = " . $this->var2str($this->id) . "
+                $sql = "UPDATE ".$this->table_name." SET id = " . $this->var2str($this->id) . "
                         , codalmacen = " . $this->var2str($this->codalmacen) . "
                         , codagente = " . $this->var2str($this->codagente) . "
                         , f_inicio = " . $this->var2str($this->f_inicio) . "
@@ -219,14 +219,14 @@ class cajas_general extends fs_model
                         , apuntes = " . $this->var2str($this->apuntes) . "
                         , ip = " . $this->var2str($this->ip) . "
                         , descuadre = " . $this->var2str($this->descuadre) . "
-                          WHERE id = $value";
+                          WHERE id = ".$value.";";
                 return $this->db->exec($sql);
             }
             
         }
         else
         {
-            $sql = "INSERT INTO {$this->table_name} (
+            $sql = "INSERT INTO ".$this->table_name." (
                                     id
                                     , codalmacen
                                     , codagente
@@ -252,7 +252,7 @@ class cajas_general extends fs_model
                                     ,  " . $this->var2str($this->ip) . "
                                     ,  " . $this->var2str($this->descuadre) . "
                                     
-                                )";               
+                                );";               
             if( $this->db->exec($sql) )
             {
                $this->id = $this->db->lastval();
@@ -277,16 +277,16 @@ class cajas_general extends fs_model
     public function get($cod)
     {
         $cod = $this->var2str($cod);
-        return $this->parse($this->db->select("SELECT * FROM {$this->table_name} WHERE id = $cod"));
+        return $this->parse($this->db->select("SELECT * FROM ".$this->table_name." WHERE id =".$cod.";"));
     }
     
     public function get_all_offset($offset=0, $limit=FS_ITEM_LIMIT)
     {
-        return $this->parse($this->db->select_limit("SELECT * FROM {$this->table_name} ORDER BY id DESC", $limit, $offset), true);
+        return $this->parse($this->db->select_limit("SELECT * FROM ".$this->table_name." ORDER BY id DESC", $limit, $offset), true);
     }
     public function get_all()
     {
-        return $this->parse($this->db->select("SELECT * FROM {$this->table_name} ORDER BY id DESC"), true);
+        return $this->parse($this->db->select("SELECT * FROM ".$this->table_name." ORDER BY id DESC;"), true);
     }
     public function parse($items, $array = false)
     {
@@ -310,21 +310,21 @@ class cajas_general extends fs_model
         $entidadlist = array();
 
         $sql = "SELECT *
-                FROM {$this->table_name}
+                FROM ".$this->table_name."
                 WHERE id > 0";
         
         
         //Primero compruebo si hay texto a buscar
         if ($almacen != '') {
-            $sql .= " AND `codalmacen` = " . $this->var2str($almacen);
+            $sql .= " AND codalmacen = " . $this->var2str($almacen);
         }
 
         if ($desde != '') {
-            $sql .= " AND `f_inicio` >= " . $this->var2str($desde);
+            $sql .= " AND f_inicio >= " . $this->var2str($desde);
         }
 
         if ($hasta != '') {
-            $sql .= " AND `f_inicio` <= " . $this->var2str($hasta);
+            $sql .= " AND f_inicio <= " . $this->var2str($hasta);
         }
 
         //Finalmente compruebo el orden
