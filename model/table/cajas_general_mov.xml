@@ -13,7 +13,7 @@
     </columna>
     <columna>
         <nombre>caja_id</nombre>
-        <tipo>int(11)</tipo>
+        <tipo>integer</tipo>
         <nulo>NO</nulo>
     </columna>
     <columna>
